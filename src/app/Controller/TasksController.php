@@ -36,6 +36,10 @@ class TasksController extends AppController {
 			);
 			// データを登録
 			$id = $this->Task->save($data);
+			if ($id === false) {
+				$this->render('create');
+				return;
+			}
 			$msg = sprintf(
 				'タスク %s を登録しました。',
 				$this->Task->id
