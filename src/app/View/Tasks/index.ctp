@@ -9,6 +9,7 @@
 		<th>操作</th>
 	</tr>
 <?php foreach ($tasks_data as $row): ?>
+	<?php echo $this->element('task', array('task' => $row)) ?>
 	<tr>
 		<td><?php echo $this->Html->link(
 			$row['Task']['id'],
