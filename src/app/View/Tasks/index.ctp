@@ -9,12 +9,21 @@
 		<th>操作</th>
 	</tr>
 <?php foreach ($tasks_data as $row): ?>
+	<?php echo $this->element('task', array('task' => $row)) ?>
 	<tr>
 		<td><?php echo $this->Html->link(
 			$row['Task']['id'],
 			'/Tasks/view/' . $row['Task']['id']
 		); ?></td>
-		<td><?php echo h($row['Task']['name']); ?></td>
+		<td>
+			<?php echo h($row['Task']['name']); ?>
+			<br/>
+			<ul>
+				<?php foreach ($row['Note'] as $note): ?>
+					<li><?php echo h($note['body']); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</td>
 		<td><?php echo h($row['Task']['due_date']); ?></td>
 		<td><?php echo h($row['Task']['created']); ?></td>
 		<td><?php echo $this->Html->link(

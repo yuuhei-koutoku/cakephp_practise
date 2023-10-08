@@ -19,6 +19,7 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
+// 基本のコントローラークラスを使用するための読み込み
 App::uses('Controller', 'Controller');
 
 /**
@@ -30,5 +31,35 @@ App::uses('Controller', 'Controller');
  * @package		app.Controller
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
+
+// 全てのコントローラーが継承する基本のコントローラークラス
 class AppController extends Controller {
+    // 使用するコンポーネントの設定
+	public $components = array(
+	    // Authコンポーネントの設定（認証関連）
+		'Auth' => array(
+		    // ログインページのアクションの設定
+			'loginAction' => array(
+				'controller' => 'users', // usersコントローラー
+				'action' => 'login' // loginアクション
+			),
+			// 認証方法の設定（この場合は、Form認証）
+			'authenticate' => array(
+				'Form' => array(
+				    // ユーザーモデルの指定
+					'userModel' => 'User',
+					// フィールドのマッピング（usernameフィールドとしてemailを、passwordフィールドとしてpasswordを使用）
+					'fields' => array('username' => 'email', 'password' => 'password')
+				)
+			),
+			// ログイン成功時のリダイレクト先の設定
+			'loginRedirect' => array('controller' => 'tasks', 'action' => 'index'),
+			// ログアウト時のリダイレクト先の設定
+			'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
+		),
+		// セッションコンポーネントの使用
+		'Session',
+		// フラッシュメッセージ関連のコンポーネントの使用
+		'Flash'
+	);
 }
