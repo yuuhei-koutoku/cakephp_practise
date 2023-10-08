@@ -38,7 +38,23 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <body>
 	<div id="container">
 		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'https://cakephp.org'); ?></h1>
+			<h1>
+				<?php
+				// ユーザーがログインしている場合
+				if ($this->Session->read('Auth.User')): ?>
+					<?php echo $this->Html->link('Tasks', '/Tasks'); ?>&nbsp;
+					<?php echo $this->Html->link('Notes', '/Notes'); ?>&nbsp;&nbsp;&nbsp;
+					<?php echo $this->Html->link('Categories', '/Categories'); ?>&nbsp;
+					<?php echo $this->Html->link('Topics', '/Topics'); ?>&nbsp;
+					<?php echo $this->Html->link('Comments', '/Comments'); ?>&nbsp;&nbsp;&nbsp;
+					<?php echo $this->Html->link('Logout', '/Users/logout'); ?>
+				<?php
+				// ユーザーがログインしていない場合
+				else : ?>
+					<?php echo $this->Html->link('Login', '/Users/login'); ?>&nbsp;
+					<?php echo $this->Html->link('Sign Up', '/Users/signup'); ?>
+				<?php endif; ?>
+			</h1>
 		</div>
 		<div id="content">
 
