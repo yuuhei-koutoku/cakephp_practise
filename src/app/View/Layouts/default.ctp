@@ -47,6 +47,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 					<?php echo $this->Html->link('Categories', '/Categories'); ?>&nbsp;
 					<?php echo $this->Html->link('Topics', '/Topics'); ?>&nbsp;
 					<?php echo $this->Html->link('Comments', '/Comments'); ?>&nbsp;&nbsp;&nbsp;
+					<?php echo $this->Html->link('Articles', '/Articles'); ?>&nbsp;&nbsp;&nbsp;
 					<?php echo $this->Html->link('Logout', '/Users/logout'); ?>
 				<?php
 				// ユーザーがログインしていない場合

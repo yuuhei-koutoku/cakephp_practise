@@ -1,4 +1,5 @@
 <?php
+// bakeコマンドで作成
 App::uses('AppController', 'Controller');
 /**
  * Categories Controller

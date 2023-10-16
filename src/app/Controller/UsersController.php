@@ -1,4 +1,5 @@
 <?php
+// 書籍を参考にして実装
 class UsersController extends AppController {
 
 	// このメソッドは、コントローラのアクションが呼び出される前に実行される
